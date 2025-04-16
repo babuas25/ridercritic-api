@@ -1,8 +1,7 @@
-from fastapi import FastAPI, Depends
+from app.config import Settings, get_settings
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from firebase_admin import initialize_app
-
-from app.config import get_settings, Settings
 
 # Initialize Firebase Admin
 firebase_app = initialize_app()
@@ -28,12 +27,13 @@ app.add_middleware(
 )
 
 # Import and include routers
-from app.api.routes import auth, users, bikes, reviews
+from app.api.routes import auth, bikes, reviews, users
 
 app.include_router(auth.router, prefix="/api/v1/auth", tags=["Authentication"])
 app.include_router(users.router, prefix="/api/v1/users", tags=["Users"])
 app.include_router(bikes.router, prefix="/api/v1/bikes", tags=["Bikes"])
 app.include_router(reviews.router, prefix="/api/v1/reviews", tags=["Reviews"])
+
 
 @app.get("/")
 async def root(settings: Settings = Depends(get_settings)):
@@ -41,9 +41,10 @@ async def root(settings: Settings = Depends(get_settings)):
         "app": settings.app_name,
         "version": settings.version,
         "status": "running",
-        "environment": settings.environment
+        "environment": settings.environment,
     }
+
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy"} 
+    return {"status": "healthy"}

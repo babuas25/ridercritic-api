@@ -1,8 +1,9 @@
 from typing import Dict, Optional
 
+from fastapi import HTTPException, status
 from firebase_admin import auth
 from firebase_admin.auth import UserRecord
-from fastapi import HTTPException, status
+
 
 class FirebaseAuthService:
     @staticmethod
@@ -32,7 +33,9 @@ class FirebaseAuthService:
             )
 
     @staticmethod
-    async def create_user(email: str, password: str, display_name: Optional[str] = None) -> UserRecord:
+    async def create_user(
+        email: str, password: str, display_name: Optional[str] = None
+    ) -> UserRecord:
         try:
             user_data = {
                 "email": email,
@@ -108,4 +111,4 @@ class FirebaseAuthService:
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail=str(e),
-            ) 
+            )

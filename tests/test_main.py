@@ -1,8 +1,9 @@
-from fastapi.testclient import TestClient
-from app.main import app
 from app.config import Settings, get_settings
+from app.main import app
+from fastapi.testclient import TestClient
 
 client = TestClient(app)
+
 
 def test_read_root():
     response = client.get("/")
@@ -12,10 +13,12 @@ def test_read_root():
     assert "version" in data
     assert "environment" in data
 
+
 def test_health_check():
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json() == {"status": "healthy"}
+
 
 def test_settings():
     settings = get_settings()
@@ -27,4 +30,4 @@ def test_settings():
     assert hasattr(settings, "firebase_api_key")
     assert hasattr(settings, "firebase_auth_domain")
     assert hasattr(settings, "firebase_storage_bucket")
-    assert hasattr(settings, "allowed_origins") 
+    assert hasattr(settings, "allowed_origins")
