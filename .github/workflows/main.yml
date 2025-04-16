@@ -58,7 +58,7 @@ jobs:
 
       - name: Check code formatting
         run: |
-          black --check .
+          black --check --quiet .
           isort --check-only .
           flake8 .
 
