@@ -1,0 +1,93 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+
+# Node
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Misc
+.DS_Store
+*.log
+
+# Local development
+Thumbs.db
+
+# Model cache
+model_cache/
+*.pkl
+*.h5
+*.pt
+*.bin
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local development
+.DS_Store
+Thumbs.db
+
+# Model cache
+model_cache/
+*.pkl
+*.h5
+*.pt
+*.bin
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Firebase credentials
+config/firebase-credentials.json
+
+# Google OAuth credentials
+config/client_secret*.json 
